@@ -1028,6 +1028,9 @@ public class RequestThreadManager {
 
                             // If we still have no queued requests, go idle.
                             if (nextBurst == null) {
+                                if (mGLThreadManager != null) {
+                                    mGLThreadManager.clearUnpairedTargets();
+                                }
                                 mDeviceState.setIdle();
                                 break;
                             }
